@@ -1,24 +1,29 @@
+Feature: Testing address book website
 
-#  open http://a.testaddressbook.com/
-#  click sing in
-#  click sing up
-#  populate it and remember this
-#  sing out
+  Background:
+    Given open 'http://a.testaddressbook.com/'
+    When click sing in
 
-#  open http://a.testaddressbook.com/
-#  click sing in
-#  add data from previous test
-#  click 'Addresses'
-#click new Address
-#  populate form
-#  click Create Address
-#  verify address added
-#  click List
-#  verify address on page
-#       REPEAT 3 TINES
+  Scenario: sign in
+    When click sing up
+    And populate it and remember this
+    Then sing out
 
+  Scenario Outline: add addresses                 // REPEAT 3 TIMES
+    When add data from previous test
+    And add data from previous test
+    And click 'Addresses'
+    And click new Address
+    And populate form
+    And click Create Address
+    And verify address added
+    And click List
+    Then verify address on page
 
-#  open site
-#  sing in
-#  destroy one address
-#  verify address removed from page
+    Examples:
+      |  |
+
+  Scenario: destory one address
+    When sing in
+    Then destroy one address
+    And verify address removed from page
